@@ -1,0 +1,51 @@
+# فایل‌های سیستمی
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# فایل‌های تنظیمات IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# فایل‌های کانفیگ محلی
+/config/config.local.php
+
+# دایرکتوری‌های کش و موقت
+/logs/
+/tmp/
+/cache/
+
+# پوشه‌های اضافی پروژه
+/sample/
+
+# فایل‌های مربوط به وابستگی‌ها
+/vendor/
+/node_modules/
+
+# فایل‌های حساس و اطلاعات محرمانه
+api-openai.md
+*.key
+*.pem
+*.env
+.env
+
+# فایل‌های آپلود کاربران
+/uploads/
+
+# فایل‌های کامپایل شده
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# فایل‌های لاگ
+*.log
+
+# فایل‌های بک‌آپ
+*.bak
+*.backup
+*~

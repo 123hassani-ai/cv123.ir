@@ -1,0 +1,108 @@
+/**
+ * فایل: /public/css/style.css
+ * توضیحات: استایل‌های اختصاصی سایت
+ */
+
+/* تنظیمات فونت */
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url('../fonts/vazirmatn/Vazirmatn-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url('../fonts/vazirmatn/Vazirmatn-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* تنظیمات عمومی */
+body {
+    font-family: 'Vazirmatn', tahoma, Arial, sans-serif;
+    background-color: #f8f9fa;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.8;
+}
+
+/* تنظیمات سربرگ */
+.navbar-brand {
+    font-weight: bold;
+}
+
+/* تنظیمات کارت‌ها */
+.card {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* دکمه‌ها */
+.btn {
+    border-radius: 0.3rem;
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+}
+
+/* تنظیمات واکنش‌گرا */
+@media (max-width: 768px) {
+    .display-1 {
+        font-size: 3.5rem;
+    }
+    
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .lead {
+        font-size: 1rem;
+    }
+}
+
+/* انیمیشن‌های ساده */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* تنظیمات فرم‌ها */
+.form-control {
+    padding: 0.6rem 1rem;
+    border-radius: 0.3rem;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+/* رنگ‌های سفارشی */
+.bg-primary-light {
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+.bg-success-light {
+    background-color: rgba(25, 135, 84, 0.1);
+}
+
+.bg-info-light {
+    background-color: rgba(13, 202, 240, 0.1);
+}
