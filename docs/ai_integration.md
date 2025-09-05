@@ -31,23 +31,67 @@ define('OPENAI_API_KEY', '');  // کلید API هوش مصنوعی OpenAI
 
 کلید API خود را در این قسمت وارد کنید.
 
-## کلاس رابط OpenAI
+## مدیریت کلید API از طریق پنل مدیریت
 
-برای سهولت استفاده از API OpenAI، یک کلاس رابط در پوشه `app/helpers` ایجاد شده است:
+مدیریت کلید API و تنظیمات OpenAI از طریق بخش تنظیمات پنل مدیریت امکان‌پذیر است. برای این منظور:
+
+1. وارد پنل مدیریت شوید: `{BASE_URL}/admin`
+2. به بخش تنظیمات بروید: `{BASE_URL}/admin/settings`
+3. به تب "تنظیمات هوش مصنوعی" بروید
+
+در این بخش می‌توانید:
+- کلید API را وارد کنید
+- مدل هوش مصنوعی را انتخاب کنید (GPT-3.5 Turbo، GPT-4، و غیره)
+- دستورالعمل‌های پیش‌فرض هوش مصنوعی را تنظیم کنید
+- اتصال به API را تست کنید
+
+### تست اتصال به OpenAI
+
+برای اطمینان از صحت کلید API و اتصال به سرویس OpenAI، می‌توانید از قابلیت تست اتصال در پنل مدیریت استفاده کنید:
+
+1. کلید API را وارد کنید
+2. روی دکمه "تست اتصال" کلیک کنید
+3. سیستم یک درخواست آزمایشی به OpenAI ارسال می‌کند و نتیجه را نمایش می‌دهد
+
+کد پشت صحنه این قابلیت در کلاس `SettingsController` پیاده‌سازی شده است:
 
 ```php
-<?php
 /**
- * فایل: /app/helpers/OpenAIService.php
- * توضیحات: کلاس رابط برای اتصال به سرویس هوش مصنوعی OpenAI
+ * تست اتصال به OpenAI
  */
-
-class OpenAIService
+public function testOpenAI()
 {
-    private $apiKey;
-    private $apiUrl = 'https://api.openai.com/v1';
-    private $model = 'gpt-3.5-turbo';
+    // بررسی دسترسی مدیر
+    $this->checkAdminAccess();
     
+    // دریافت کلید API
+    $apiKey = $_POST['api_key'] ?? '';
+    
+    if (empty($apiKey)) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'کلید API وارد نشده است.'
+        ]);
+        return;
+    }
+    
+    // ذخیره موقت کلید API
+    $this->saveTemporaryApiKey($apiKey);
+    
+    // تست اتصال
+    try {
+        $openai = new OpenAIService();
+        $result = $openai->testConnection();
+        
+        echo json_encode($result);
+    } catch (Exception $e) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'خطا در تست اتصال: ' . $e->getMessage()
+        ]);
+    }
+}
+```
     /**
      * سازنده کلاس
      */

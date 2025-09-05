@@ -6,10 +6,22 @@
 
 - **نام پایگاه داده**: `cv123_db`
 - **سیستم پایگاه داده**: MySQL 8.0 / MariaDB
-- **پورت**: 3307
-- **کاراکترست**: utf8mb4_unicode_ci (برای پشتیبانی کامل از زبان فارسی)
+- **پورت**: 3307 (XAMPP)
+- **کاراکترست**: utf8mb4_persian_ci (برای پشتیبانی کامل از زبان فارسی)
 - **نام کاربری پیش‌فرض**: `root`
 - **رمز عبور پیش‌فرض**: `Mojtab@123`
+
+## اتصال به پایگاه داده
+
+### در محیط XAMPP macOS
+سیستم به طور خودکار از Unix Socket استفاده می‌کند:
+- **Socket Path**: `/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock`
+- **DSN**: `mysql:unix_socket=/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock;dbname=cv123_db;charset=utf8mb4`
+
+### در سایر محیط‌ها
+- **Host**: localhost
+- **Port**: 3307 (یا 3306 برای تنظیمات استاندارد)
+- **DSN**: `mysql:host=localhost;port=3307;dbname=cv123_db;charset=utf8mb4`
 
 ## دیاگرام ساختاری (ER Diagram)
 
@@ -98,6 +110,25 @@ skills 1---* job_skills
 لیست مهارت‌های موجود در سیستم را نگهداری می‌کند.
 
 | فیلد | نوع | توضیحات |
+|------|-----|---------|
+| id | INT | کلید اصلی، خودکار افزایشی |
+| name | VARCHAR(100) | نام مهارت |
+| slug | VARCHAR(100) | نام انگلیسی مهارت |
+| category | VARCHAR(50) | دسته‌بندی مهارت |
+| created_at | TIMESTAMP | زمان ایجاد |
+| updated_at | TIMESTAMP | زمان آخرین به‌روزرسانی |
+
+### جدول `settings`
+
+تنظیمات سامانه را نگهداری می‌کند.
+
+| فیلد | نوع | توضیحات |
+|------|-----|---------|
+| key | VARCHAR(50) | کلید تنظیم (کلید اصلی) |
+| value | TEXT | مقدار تنظیم |
+| group | VARCHAR(50) | گروه تنظیم (عمومی، هوش مصنوعی، پیامک، فوتر و غیره) |
+| created_at | TIMESTAMP | زمان ایجاد |
+| updated_at | TIMESTAMP | زمان آخرین به‌روزرسانی |
 |------|-----|---------|
 | id | INT | کلید اصلی، خودکار افزایشی |
 | name | VARCHAR(100) | نام مهارت |

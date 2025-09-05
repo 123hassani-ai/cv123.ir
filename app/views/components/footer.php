@@ -13,7 +13,7 @@
                 <p class="text-muted">سامانه استخدام نیروی انسانی مجتمع کامپیوتر یک دو سه</p>
                 <p class="mt-3">
                     <a href="<?php echo BASE_URL; ?>/" class="text-decoration-none text-white">
-                        <img src="<?php echo BASE_URL; ?>/logo-site.png" alt="لوگو" height="40" class="d-inline-block">
+                        <img src="<?php echo BASE_URL; ?>/public/images/logo-site-light.png" alt="لوگو" height="40" class="d-inline-block">
                     </a>
                 </p>
             </div>

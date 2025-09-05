@@ -16,6 +16,9 @@ require_once CONFIG_PATH . '/config.php';
 // بارگذاری کلاس‌های اصلی
 require_once APP_PATH . '/helpers/Autoloader.php';
 
+// ثبت Autoloader
+Autoloader::register();
+
 // شروع نشست
 session_start();
 

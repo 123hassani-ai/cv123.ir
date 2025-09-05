@@ -13,20 +13,20 @@
     <title><?php echo isset($pageTitle) ? $pageTitle . ' | ' . APP_NAME : APP_NAME; ?></title>
     
     <!-- فونت وزیرمتن -->
-    <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/fonts/vazirmatn/vazirmatn.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/public/fonts/vazirmatn/vazirmatn.css">
     
     <!-- بوت استرپ ۵ -->
-    <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/public/css/bootstrap.rtl.min.css">
     
     <!-- استایل‌های اختصاصی -->
-    <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/public/css/style.css">
     
     <!-- منیفست PWA -->
     <link rel="manifest" href="<?php echo BASE_URL; ?>/manifest.json">
     
     <!-- آیکون‌ها -->
-    <link rel="icon" href="<?php echo BASE_URL; ?>/favicon.ico">
-    <link rel="apple-touch-icon" href="<?php echo BASE_URL; ?>/apple-touch-icon.png">
+    <link rel="icon" href="<?php echo BASE_URL; ?>/public/images/favicon.ico">
+    <link rel="apple-touch-icon" href="<?php echo BASE_URL; ?>/public/images/logo-site-dark.png">
     
     <?php if (isset($extraStyles)) echo $extraStyles; ?>
 </head>
@@ -43,9 +43,9 @@
     <?php include_once APP_PATH . '/views/components/footer.php'; ?>
     
     <!-- جاوااسکریپت‌ها -->
-    <script src="<?php echo ASSETS_URL; ?>/js/bootstrap.bundle.min.js"></script>
-    <script src="<?php echo ASSETS_URL; ?>/js/jquery-3.6.0.min.js"></script>
-    <script src="<?php echo ASSETS_URL; ?>/js/app.js"></script>
+    <script src="<?php echo BASE_URL; ?>/public/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>/public/js/jquery-3.6.0.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>/public/js/app.js"></script>
     
     <!-- سرویس ورکر PWA -->
     <script>

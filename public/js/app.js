@@ -5,10 +5,12 @@
 
 // اجرای کد بعد از بارگذاری کامل صفحه
 document.addEventListener('DOMContentLoaded', function() {
-    // اضافه کردن کلاس به المان‌ها برای اعمال انیمیشن
+    // اضافه کردن کلاس به المان‌ها برای اعمال انیمیشن با تأخیر
     const animElements = document.querySelectorAll('.card, .btn-primary, h1, .lead');
-    animElements.forEach(el => {
-        el.classList.add('fade-in');
+    animElements.forEach((el, index) => {
+        setTimeout(() => {
+            el.classList.add('fade-in');
+        }, 100 * index);
     });
     
     // نمایش اعلان‌ها با تأخیر و حذف خودکار

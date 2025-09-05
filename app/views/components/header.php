@@ -9,7 +9,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="<?php echo BASE_URL; ?>/">
-                <img src="<?php echo BASE_URL; ?>/logo-site.png" alt="لوگو" height="40" class="d-inline-block align-text-top">
+                <img src="<?php echo BASE_URL; ?>/public/images/logo-site-light.png" alt="لوگو" height="40" class="d-inline-block align-text-top">
                 مجتمع کامپیوتر یک دو سه
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

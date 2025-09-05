@@ -56,11 +56,27 @@
    define('OPENAI_API_KEY', ''); // کلید API هوش مصنوعی OpenAI
    ```
 
-### 3. ایجاد پایگاه داده
+### 3. راه‌اندازی پایگاه داده
 
-برای ایجاد پایگاه داده، دو روش وجود دارد:
+#### 3.1. ایجاد پایگاه داده اصلی
 
-#### روش 1: استفاده از اسکریپت نصب
+1. MySQL یا MariaDB را راه‌اندازی کنید
+
+2. به پایگاه داده وصل شوید:
+   ```bash
+   /Applications/XAMPP/xamppfiles/bin/mysql -u root -p'Mojtab@123'
+   ```
+
+3. پایگاه داده جدید ایجاد کنید:
+   ```sql
+   CREATE DATABASE cv123_db CHARACTER SET utf8mb4 COLLATE utf8mb4_persian_ci;
+   ```
+
+#### 3.2. اجرای اسکریپت‌های پایگاه داده
+
+برای ایجاد پایگاه داده، چند روش وجود دارد:
+
+##### روش 1: استفاده از اسکریپت نصب
 
 1. مرورگر را باز کرده و به آدرس زیر بروید:
    ```
@@ -69,17 +85,37 @@
 
 2. مراحل نصب را دنبال کنید تا پایگاه داده به طور کامل ایجاد شود.
 
-#### روش 2: اجرای مستقیم اسکریپت SQL
+##### روش 2: اجرای مستقیم اسکریپت‌های SQL
 
-1. ابتدا دیتابیس را ایجاد کنید:
+1. ابتدا ساختار اصلی جداول را ایجاد کنید:
    ```bash
-   /Applications/XAMPP/xamppfiles/bin/mysql -u root -p'Mojtab@123' -e "CREATE DATABASE cv123_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+   cd /Applications/XAMPP/xamppfiles/htdocs/cv123.ir
+   /Applications/XAMPP/xamppfiles/bin/mysql -u root -p'Mojtab@123' cv123_db < database/database.sql
    ```
 
-2. سپس فایل SQL را اجرا کنید:
+2. سپس جدول تنظیمات را ایجاد کنید:
    ```bash
-   /Applications/XAMPP/xamppfiles/bin/mysql -u root -p'Mojtab@123' cv123_db < /Applications/XAMPP/xamppfiles/htdocs/cv123.ir/database/database.sql
+   /Applications/XAMPP/xamppfiles/bin/mysql -u root -p'Mojtab@123' cv123_db < database/settings.sql
    ```
+
+##### روش 3: استفاده از اسکریپت‌های PHP
+
+1. برای ایجاد جدول تنظیمات:
+   ```bash
+   php database/apply_settings.php
+   ```
+
+2. برای انتقال تنظیمات از فایل JSON (اگر وجود دارد):
+   ```bash
+   php database/migrate_settings.php
+   ```
+
+#### 3.3. نکات مهم برای XAMPP در macOS
+
+- کلاس Database به طور خودکار از Unix Socket استفاده می‌کند
+- Socket path: `/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock`
+- این تنظیم به طور خودکار تشخیص داده می‌شود و نیازی به تغییر ندارد
+- در صورت مشکل اتصال، مطمئن شوید که MySQL XAMPP در حال اجرا است
 
 ### 4. تنظیم وب سرور
 

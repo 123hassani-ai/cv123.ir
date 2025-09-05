@@ -1,0 +1,95 @@
+# فایل .htaccess برای پوشه public
+# تنظیمات برای سرو کردن فایل‌های static
+
+# فعال کردن Rewrite Engine
+RewriteEngine On
+
+# اجازه دسترسی به فایل‌های CSS
+<Files "*.css">
+    Order allow,deny
+    Allow from all
+</Files>
+
+# اجازه دسترسی به فایل‌های فونت
+<Files "*.woff2">
+    Order allow,deny
+    Allow from all
+    Header set Access-Control-Allow-Origin "*"
+</Files>
+
+<Files "*.woff">
+    Order allow,deny
+    Allow from all
+    Header set Access-Control-Allow-Origin "*"
+</Files>
+
+<Files "*.ttf">
+    Order allow,deny
+    Allow from all
+    Header set Access-Control-Allow-Origin "*"
+</Files>
+
+# اجازه دسترسی به فایل‌های تصویری
+<Files "*.ico">
+    Order allow,deny
+    Allow from all
+</Files>
+
+<Files "*.png">
+    Order allow,deny
+    Allow from all
+</Files>
+
+<Files "*.jpg">
+    Order allow,deny
+    Allow from all
+</Files>
+
+<Files "*.jpeg">
+    Order allow,deny
+    Allow from all
+</Files>
+
+<Files "*.gif">
+    Order allow,deny
+    Allow from all
+</Files>
+
+<Files "*.svg">
+    Order allow,deny
+    Allow from all
+</Files>
+
+# اجازه دسترسی به فایل‌های JavaScript
+<Files "*.js">
+    Order allow,deny
+    Allow from all
+</Files>
+
+# تنظیم MIME Types برای فونت‌ها
+<IfModule mod_mime.c>
+    AddType application/font-woff2 .woff2
+    AddType application/font-woff .woff
+    AddType application/vnd.ms-fontobject .eot
+    AddType font/truetype .ttf
+    AddType font/opentype .otf
+</IfModule>
+
+# فشرده‌سازی فایل‌ها برای بهبود سرعت
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE font/woff2
+    AddOutputFilterByType DEFLATE font/woff
+</IfModule>
+
+# تنظیم Cache Headers برای فونت‌ها
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresByType font/woff2 "access plus 1 month"
+    ExpiresByType font/woff "access plus 1 month"
+    ExpiresByType font/truetype "access plus 1 month"
+    ExpiresByType font/opentype "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 month"
+</IfModule>

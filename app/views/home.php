@@ -6,9 +6,9 @@
 ?>
 
 <div class="row">
-    <div class="col-md-12 text-center mb-5">
-        <img src="<?php echo BASE_URL; ?>/logo-site.png" alt="لوگوی مجتمع کامپیوتر یک دو سه" class="img-fluid" style="max-height: 150px;">
-        <h1 class="mt-3">مجتمع کامپیوتر یک دو سه</h1>
+    <div class="col-md-12 text-center mb-5 fade-in">
+        <img src="<?php echo BASE_URL; ?>/public/images/logo-site-dark.png" alt="لوگوی مجتمع کامپیوتر یک دو سه" class="img-fluid" style="max-height: 180px;">
+        <h1 class="mt-4 display-4 fw-bold">مجتمع کامپیوتر یک دو سه</h1>
         <p class="lead">سامانه استخدام نیروی انسانی</p>
     </div>
 </div>

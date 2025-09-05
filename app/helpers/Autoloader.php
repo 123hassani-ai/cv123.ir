@@ -16,10 +16,10 @@ class Autoloader
             
             // مسیرهای ممکن برای جستجوی کلاس
             $paths = [
-                APP_PATH . '/models/',
-                APP_PATH . '/controllers/',
-                APP_PATH . '/helpers/',
-                APP_PATH . '/middleware/'
+                __DIR__ . '/../models/',
+                __DIR__ . '/../controllers/', 
+                __DIR__ . '/../helpers/',
+                __DIR__ . '/../middleware/'
             ];
             
             foreach ($paths as $path) {
