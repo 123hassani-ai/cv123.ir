@@ -40,7 +40,13 @@ if (DEBUG_MODE) {
 // تنظیم منطقه زمانی
 date_default_timezone_set('Asia/Tehran');
 
-// تنظیمات مسیرها
-define('BASE_URL', '');  // مسیر پایه سایت (در هاست اصلی خالی می‌ماند)
+// تنظیمات مسیرها (با بررسی تعریف قبلی)
+define('BASE_URL', '/cv123.ir');  // مسیر پایه سایت (در محیط محلی /cv123.ir)
 define('ASSETS_URL', BASE_URL . '/public');
+if (!defined('APP_PATH')) {
+    define('APP_PATH', dirname(__DIR__) . '/app');  // مسیر پوشه app
+}
+if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', dirname(__DIR__));  // مسیر ریشه پروژه
+}
 ?>

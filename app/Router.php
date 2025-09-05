@@ -77,12 +77,21 @@ class Router
                     return call_user_func_array($route['callback'], $matches);
                 } else {
                     list($controller, $action) = explode('@', $route['callback']);
-                    $controllerFile = APP_PATH . '/controllers/' . $controller . '.php';
                     
-                    if (file_exists($controllerFile)) {
-                        require_once $controllerFile;
+                    // استفاده از Autoloader بجای require_once مستقیم
+                    if (class_exists($controller)) {
                         $controllerInstance = new $controller();
                         return call_user_func_array([$controllerInstance, $action], $matches);
+                    } else {
+                        // اگر Autoloader نتوانست کلاس را بارگذاری کند، تلاش مستقیم
+                        $controllerFile = APP_PATH . '/controllers/' . $controller . '.php';
+                        if (file_exists($controllerFile)) {
+                            require_once $controllerFile;
+                            if (class_exists($controller)) {
+                                $controllerInstance = new $controller();
+                                return call_user_func_array([$controllerInstance, $action], $matches);
+                            }
+                        }
                     }
                 }
             }
@@ -124,10 +133,35 @@ $router->get('/register', 'AuthController@showRegister');
 $router->post('/register', 'AuthController@register');
 $router->get('/logout', 'AuthController@logout');
 
-// مسیرهای مدیر
+// مسیرهای مدیر - کنترلر قدیمی (برای سازگاری موقت)
 $router->get('/admin', 'AdminController@dashboard');
 $router->get('/admin/login', 'AdminController@showLogin');
 $router->post('/admin/login', 'AdminController@login');
+$router->get('/admin/logout', 'AdminController@logout');
+$router->get('/admin/settings', 'AdminController@settings');
+$router->post('/admin/settings/save', 'AdminController@saveSettings');
+$router->post('/admin/settings/test-openai', 'SettingsController@testOpenAI');
+$router->post('/admin/settings/test-sms', 'SettingsController@testSms');
+$router->get('/admin/content', 'AdminController@content');
+$router->post('/admin/content/save', 'AdminController@saveContent');
+
+// مسیرهای مدیریت لاگ‌ها
+$router->get('/admin/logs', 'LogsController@index');
+$router->post('/admin/logs/ajax', 'LogsController@ajax');
+$router->get('/admin/logs/download', 'LogsController@download');
+$router->post('/admin/logs/cleanup', 'LogsController@cleanup');
+$router->get('/admin/logs/users', 'LogsController@getUsersList');
+
+// مسیرهای جدید مدیر - کنترلر تفکیک شده
+$router->get('/admin/new', 'NewAdminController@dashboard');
+$router->get('/admin/general-settings', 'NewAdminController@generalSettings');
+$router->post('/admin/general-settings/save', 'NewAdminController@saveGeneralSettings');
+$router->get('/admin/sms-settings', 'NewAdminController@smsSettings');
+$router->post('/admin/sms-settings/save', 'NewAdminController@saveSmsSettings');
+$router->post('/admin/sms-settings/test', 'NewAdminController@testSms');
+$router->get('/admin/ai-settings', 'NewAdminController@aiSettings');
+$router->post('/admin/ai-settings/save', 'NewAdminController@saveAiSettings');
+$router->post('/admin/ai-settings/test', 'NewAdminController@testAi');
 
 // مسیرهای API
 $router->post('/api/chat', 'ChatController@sendMessage');
