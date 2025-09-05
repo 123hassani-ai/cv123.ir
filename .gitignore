@@ -11,6 +11,7 @@ desktop.ini
 
 # فایل‌های کانفیگ محلی
 /config/config.local.php
+/config/temp_settings.json
 
 # دایرکتوری‌های کش و موقت
 /logs/
