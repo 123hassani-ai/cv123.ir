@@ -1,0 +1,13 @@
+{
+    "openai_api_key": "YOUR_API_KEY_HERE",
+    "sms_api_key": "YOUR_SMS_API_KEY_HERE",
+    "sms_line_number": "YOUR_SMS_LINE_NUMBER_HERE",
+    "database": {
+        "host": "localhost",
+        "username": "root",
+        "password": "YOUR_DB_PASSWORD_HERE",
+        "name": "cv123_db",
+        "port": 3307
+    },
+    "debug_mode": true
+}
